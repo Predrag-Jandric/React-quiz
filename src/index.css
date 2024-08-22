@@ -38,6 +38,14 @@ body {
 
 .main {
   width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-container {
+  width: 50rem;
 }
 
 .app-header {
@@ -45,7 +53,8 @@ body {
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .error {
@@ -74,7 +83,7 @@ h2 {
 h3 {
   font-size: 2.4rem;
   font-weight: 600;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 h4 {
@@ -87,6 +96,9 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 2.2rem;
+  gap: 3rem;
+  text-align: center;
 }
 
 .progress {
@@ -175,10 +187,14 @@ progress {
   color: var(--color-light);
   border-radius: 100px;
   text-align: center;
-  padding: 2rem 0;
+  padding: 2rem;
   font-size: 2rem;
   font-weight: 500;
-  margin-bottom: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+.btn-restart {
+  margin: 0 auto;
 }
 
 .result span {
@@ -255,4 +271,13 @@ progress {
 .counter * {
   font-size: inherit;
   padding: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .section-container {
+    width: 100%;
+  }
+  .app-header {
+    flex-direction: column;
+  }
 }

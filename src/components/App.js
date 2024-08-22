@@ -12,7 +12,7 @@ import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
 
-const SECS_PER_QUESTION = 15
+const SECS_PER_QUESTION = 15;
 
 const initialState = {
   questions: [],
@@ -35,7 +35,11 @@ function reducer(state, action) {
       return { ...state, status: "error" };
 
     case "start":
-      return { ...state, status: "active", secondsRemaining: state.questions.length * SECS_PER_QUESTION };
+      return {
+        ...state,
+        status: "active",
+        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+      };
 
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -114,7 +118,7 @@ function App() {
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
         {status === "active" && (
-          <>
+          <section className="section-container">
             <Progress
               index={index}
               numQuestions={numQuestions}
@@ -136,7 +140,7 @@ function App() {
                 numQuestions={numQuestions}
               />
             </Footer>
-          </>
+          </section>
         )}
         {status === "finished" && (
           <FinishScreen
