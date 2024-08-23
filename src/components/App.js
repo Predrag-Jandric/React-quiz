@@ -1,9 +1,10 @@
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
+// import { useEffect } from "react";
 // -----------------
 import Header from "./Header";
 import Main from "./Main";
-import Loader from "./Loader";
-import Error from "./Error";
+// import Loader from "./Loader";
+// import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Question from "./Question";
 import NextButton from "./NextButton";
@@ -11,14 +12,15 @@ import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
+import data from "../questions.json";
 
 const SECS_PER_QUESTION = 15;
 
 const initialState = {
-  questions: [],
+  questions: data,
 
-  // loading, error, ready, active, finished
-  status: "loading",
+  // status can be: loading, error, ready, active, finished
+  status: "ready",
   index: 0,
   answer: null,
   points: 0,
@@ -28,11 +30,11 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "dataReceived":
-      return { ...state, questions: action.payload, status: "ready" };
+    // case "dataReceived":
+    //   return { ...state, questions: action.payload, status: "ready" };
 
-    case "dataFailed":
-      return { ...state, status: "error" };
+    // case "dataFailed":
+    //   return { ...state, status: "error" };
 
     case "start":
       return {
@@ -100,20 +102,20 @@ function App() {
     0
   );
 
-  useEffect(function () {
-    fetch("http://localhost:8000/questions")
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
-      .catch((err) => dispatch({ type: "dataFailed" }));
-  }, []);
+  // useEffect(function () {
+  //   fetch("http://localhost:8000/questions")
+  //     .then((res) => res.json())
+  //     .then((data) => dispatch({ type: "dataReceived", payload: data }))
+  //     .catch((err) => dispatch({ type: "dataFailed" }));
+  // }, []);
 
   return (
     <div className="app">
       <Header />
 
       <Main className="main">
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
+        {/* {status === "loading" && <Loader />}
+        {status === "error" && <Error />} */}
         {status === "ready" && (
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
