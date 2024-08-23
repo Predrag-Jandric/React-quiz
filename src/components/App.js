@@ -70,7 +70,6 @@ function reducer(state, action) {
       return {
         ...state,
         status: "ready",
-        highscore: 0,
         index: 0,
         answer: null,
         points: 0,
